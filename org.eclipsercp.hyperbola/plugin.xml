@@ -19,5 +19,14 @@
             id="org.eclipsercp.hyperbola.perspective">
       </perspective>
    </extension>
+   <extension
+         point="org.eclipse.ui.views">
+         <view
+               class="org.eclipsercp.hyperbola.view.ContactsView"
+               icon="icons/contact-us.jpg"
+               id="org.eclipsercp.hyperbola.view.contacts"
+               name="Contacts">
+         </view>
+   </extension>
 
 </plugin>
