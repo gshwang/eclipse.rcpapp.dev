@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
+<?eclipse version="3.2"?>
 <plugin>
 
    <extension
@@ -14,19 +14,18 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            name="RCP Perspective"
+            name="Hyperbola Perspective"
             class="org.eclipsercp.hyperbola.Perspective"
             id="org.eclipsercp.hyperbola.perspective">
       </perspective>
    </extension>
    <extension
          point="org.eclipse.ui.views">
-         <view
-               class="org.eclipsercp.hyperbola.view.ContactsView"
-               icon="icons/contact-us.jpg"
-               id="org.eclipsercp.hyperbola.view.contacts"
-               name="Contacts">
-         </view>
+      <view
+            class="org.eclipsercp.hyperbola.view.ContactsView"
+            icon="icons/groups.gif"
+            id="org.eclipsercp.hyperbola.view.contacts"
+            name="Contacts"/>
    </extension>
 
 </plugin>
