@@ -16,6 +16,7 @@
  *******************************************************************************/
 package org.eclipsercp.hyperbola;
 
+import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.ICoolBarManager;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
@@ -30,41 +31,38 @@ import org.eclipse.ui.application.IActionBarConfigurer;
 
 public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
+	private IWorkbenchAction exitAction;
+	private IWorkbenchAction aboutAction;
+	private AddContactAction addContactAction;
+	
 	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
 		super(configurer);
 	}
-
-	private IWorkbenchAction exitAction;
-
-	private IWorkbenchAction aboutAction;
-
 
 	protected void makeActions(IWorkbenchWindow window) {
 		exitAction = ActionFactory.QUIT.create(window);
 		register(exitAction);
 		aboutAction = ActionFactory.ABOUT.create(window);
 		register(aboutAction);
+		addContactAction = new AddContactAction(window);
+		register(addContactAction);
 	}
 
 	protected void fillMenuBar(IMenuManager menuBar) {
 		MenuManager hyperbolaMenu = new MenuManager("&Hyperbola", "hyperbola");
+		hyperbolaMenu.add(addContactAction);
 		hyperbolaMenu.add(new Separator());
 		hyperbolaMenu.add(exitAction);
 		MenuManager helpMenu = new MenuManager("&Help", "help");
 		helpMenu.add(aboutAction);
 		menuBar.add(hyperbolaMenu);
-		menuBar.add(helpMenu);
+		hyperbolaMenu.add(helpMenu);
 	}
 
 	protected void fillCoolBar(ICoolBarManager coolBar) {
 		IToolBarManager toolbar = new ToolBarManager(coolBar.getStyle());
 		coolBar.add(toolbar);
-		toolbar.add(aboutAction);
-	}
-
-	protected void fillTrayItem(IMenuManager trayItem) {
-		trayItem.add(aboutAction);
-		trayItem.add(exitAction);
+		toolbar.add(addContactAction);
 	}
 	
 }
